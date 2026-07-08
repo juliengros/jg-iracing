@@ -1,0 +1,164 @@
+:root {
+  --bg-dark: #070a0f;
+  --bg-mid: #0f141c;
+  --text-main: #f4f8fc;
+  --text-muted: #aab5c4;
+  --accent-red: #ed1212;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(155deg, var(--bg-dark), var(--bg-mid));
+}
+
+.scene__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.scene__overlay {
+  background:
+    radial-gradient(circle at 52% 42%, rgba(237, 18, 18, 0.12), transparent 58%),
+    linear-gradient(180deg, rgba(7, 10, 14, 0.22), rgba(7, 10, 14, 0.48));
+  opacity: 0;
+  animation: introFadeIn 1.2s ease-out 1 forwards;
+}
+
+.thanks {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: clamp(1rem, 3vw, 2rem);
+  animation: ultraSlowFadeOut 30s linear 1 forwards;
+}
+
+.thanks__kicker {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(0.85rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.thanks__title {
+  margin: 0.55rem 0 0;
+  color: var(--text-main);
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  letter-spacing: 0.14em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-shadow: 0 0 36px rgba(237, 18, 18, 0.23);
+}
+
+.thanks__subtitle {
+  margin: 1rem 0 0;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.9rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signature {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.1rem, 3vh, 2.4rem);
+  transform: translateX(-50%);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(170, 181, 196, 0.24);
+  background: rgba(6, 9, 14, 0.45);
+  animation: ultraSlowFadeOut 30s linear 1 forwards;
+}
+
+.signature__logo {
+  height: clamp(2rem, 3.8vh, 2.7rem);
+  width: auto;
+}
+
+.signature__text {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.45vw, 1.3rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: translateY(0.15rem);
+}
+
+.final-logo {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  animation: finalLogoIn 0.9s ease-out 30s 1 forwards;
+}
+
+.final-logo__image {
+  width: min(68vw, 62rem);
+  height: auto;
+  filter: blur(0px) drop-shadow(0 0 30px rgba(237, 18, 18, 0.32));
+  animation: finalLogoPulse 7.5s ease-in-out 30.9s infinite;
+}
+
+@keyframes ultraSlowFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes finalLogoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes finalLogoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: blur(0px) drop-shadow(0 0 28px rgba(237, 18, 18, 0.28));
+  }
+  50% {
+    transform: scale(1.026);
+    filter: blur(0.95px) drop-shadow(0 0 46px rgba(237, 18, 18, 0.44));
+  }
+}
+
+@keyframes introFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

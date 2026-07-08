@@ -1,6 +1,6 @@
 window.LIVE_CONFIG = {
   liveIndex: "002",
-  eventName: "SPA24 PRACTICE",
+  eventName: "SPA 24 PRACTICE",
   carName: "PORSCHE 992 GT3",
   teamName: "FR RACING TEAM",
   backgroundImageUrl: "",
