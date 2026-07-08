@@ -2,6 +2,10 @@ const defaultConfig = {
   title: "BIENVENUE DANS LE PADDOCK",
   user: "@new_follower",
   logoUrl: "https://raw.githubusercontent.com/juliengros/jg-iracing/main/StreamElements/assets/logo-jg.svg",
+  soundUrl:
+    window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+      ? "../../assets/follow-alert.wav"
+      : "https://raw.githubusercontent.com/juliengros/jg-iracing/main/StreamElements/assets/follow-alert.wav",
 };
 
 const followEventListeners = new Set([
@@ -11,16 +15,45 @@ const followEventListeners = new Set([
   "follow",
 ]);
 
+function createFollowSoundPlayer(soundUrl) {
+  if (typeof soundUrl !== "string" || soundUrl.trim().length === 0) return null;
+
+  const audio = new Audio(soundUrl.trim());
+  audio.preload = "auto";
+  audio.volume = 0.8;
+
+  return audio;
+}
+
+function playFollowSound(soundPlayer) {
+  if (!soundPlayer) return;
+
+  soundPlayer.pause();
+  soundPlayer.currentTime = 0;
+  soundPlayer.play().catch(() => {});
+}
+
+function replayAlertAnimation() {
+  const alertNode = document.getElementById("alertRoot");
+  if (!alertNode) return;
+
+  alertNode.classList.remove("alert--follow-highlight");
+  void alertNode.offsetWidth;
+  alertNode.classList.add("alert--follow-highlight");
+}
+
 function readQueryConfig() {
   const params = new URLSearchParams(window.location.search);
   const title = params.get("title") || defaultConfig.title;
   const user = params.get("user") || defaultConfig.user;
   const logoUrl = params.get("logoUrl") || defaultConfig.logoUrl;
+  const soundUrl = params.get("soundUrl") || defaultConfig.soundUrl;
 
   return {
     title: title.trim() || defaultConfig.title,
     user: user.trim() || defaultConfig.user,
     logoUrl: logoUrl.trim() || defaultConfig.logoUrl,
+    soundUrl: soundUrl.trim() || defaultConfig.soundUrl,
   };
 }
 
@@ -59,6 +92,7 @@ function applyAlertContent({ title, user, logoUrl }) {
 
 function mountFollowAlert() {
   const config = readQueryConfig();
+  const soundPlayer = createFollowSoundPlayer(config.soundUrl);
   applyAlertContent(config);
 
   window.addEventListener("onEventReceived", (event) => {
@@ -73,6 +107,9 @@ function mountFollowAlert() {
       user: followerName,
       logoUrl: config.logoUrl,
     });
+
+    replayAlertAnimation();
+    playFollowSound(soundPlayer);
   });
 }
 

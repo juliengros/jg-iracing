@@ -89,8 +89,12 @@ body {
 .alert__user {
   margin: 0;
   color: var(--text-muted);
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
   letter-spacing: 0.08em;
+}
+
+.alert--follow-highlight {
+  animation: alertFollowHighlight 860ms cubic-bezier(0.22, 0.9, 0.24, 1);
 }
 
 .alert.is-hidden {
@@ -118,5 +122,28 @@ body {
   50% {
     transform: scale(1.008);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.39);
+  }
+}
+
+@keyframes alertFollowHighlight {
+  0% {
+    transform: translateX(-22px) scale(0.985);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.34);
+    border-color: var(--panel-border);
+  }
+  35% {
+    transform: translateX(18px) scale(1.03);
+    box-shadow: 0 0 0 1px rgba(237, 18, 18, 0.35), 0 22px 58px rgba(237, 18, 18, 0.24);
+    border-color: rgba(237, 18, 18, 0.72);
+  }
+  62% {
+    transform: translateX(-8px) scale(1.012);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.36);
+    border-color: rgba(237, 18, 18, 0.5);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.34);
+    border-color: var(--panel-border);
   }
 }
