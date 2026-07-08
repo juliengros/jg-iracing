@@ -2,6 +2,7 @@ const defaultLiveConfig = {
   liveIndex: "001",
   eventName: "SPA 24 PRACTICE",
   carName: "PORSCHE 992 GT3",
+  backgroundImageUrl: "",
   startAtIso: null,
 };
 
@@ -10,7 +11,16 @@ const liveConfig = {
   ...(window.LIVE_CONFIG || {}),
 };
 
+function withSurpriseFallback(value) {
+  if (typeof value !== "string") return "Surprise!";
+  const trimmedValue = value.trim();
+  return trimmedValue.length > 0 ? trimmedValue : "Surprise!";
+}
+
 function buildCards() {
+  const eventName = withSurpriseFallback(liveConfig.eventName);
+  const carName = withSurpriseFallback(liveConfig.carName);
+
   return [
     {
       icon: "../assets/icons/icon-calendar.svg",
@@ -18,11 +28,11 @@ function buildCards() {
     },
     {
       icon: "../assets/icons/icon-track.svg",
-      text: `<strong>${liveConfig.eventName}</strong>`,
+      text: `<strong>${eventName}</strong>`,
     },
     {
       icon: "../assets/icons/icon-car.svg",
-      text: `<strong>${liveConfig.carName}</strong>`,
+      text: `<strong>${carName}</strong>`,
     },
   ];
 }
@@ -42,6 +52,27 @@ const sceneConfig = {
   countdownTarget: resolveCountdownTarget(),
   cards: buildCards(),
 };
+
+function isValidHttpUrl(value) {
+  if (typeof value !== "string" || value.trim().length === 0) return false;
+
+  try {
+    const parsedUrl = new URL(value);
+    return parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function mountCustomBackground() {
+  const backgroundNode = document.querySelector(".scene__background");
+  if (!backgroundNode) return;
+
+  const candidateUrl = (liveConfig.backgroundImageUrl || "").trim();
+  if (!isValidHttpUrl(candidateUrl)) return;
+
+  backgroundNode.style.backgroundImage = `url("${candidateUrl.replace(/"/g, '\\"')}")`;
+}
 
 function renderCards() {
   const cardsContainer = document.getElementById("sessionCards");
@@ -93,5 +124,6 @@ function mountCountdown() {
   tick();
 }
 
+mountCustomBackground();
 renderCards();
 mountCountdown();
