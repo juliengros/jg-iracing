@@ -40,13 +40,11 @@ body {
   background-image: url("../assets/images/bg-spa-iracing.png");
   background-size: cover;
   background-position: center;
-  filter: grayscale(0.88) brightness(0.33) contrast(1.08);
+  filter: grayscale(0.08) brightness(0.98) contrast(1.02);
 }
 
 .scene__overlay {
-  background:
-    radial-gradient(circle at 50% 52%, rgba(237, 18, 18, 0.18), transparent 56%),
-    linear-gradient(180deg, rgba(4, 6, 10, 0.55), rgba(3, 5, 9, 0.82));
+  background: radial-gradient(circle at 50% 52%, rgba(237, 18, 18, 0.08), transparent 62%);
   animation: overlayShift 8s ease-in-out infinite;
 }
 
@@ -55,7 +53,7 @@ body {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
-  opacity: 0.16;
+  opacity: 0.07;
 }
 
 .top-strip {
@@ -64,7 +62,7 @@ body {
   width: 100%;
   min-height: clamp(3.2rem, 6.5vh, 4.35rem);
   border-bottom: 1px solid var(--line-soft);
-  background: linear-gradient(90deg, rgba(2, 3, 5, 0.95), rgba(4, 6, 10, 0.88));
+  background: linear-gradient(90deg, rgba(8, 12, 18, 0.44), rgba(12, 18, 26, 0.34));
   display: grid;
   grid-template-columns: 1fr minmax(0, 1.5fr) 1fr;
   align-items: center;
@@ -127,16 +125,16 @@ body {
 
 .pause-panel {
   position: absolute;
-  left: 50%;
+  left: clamp(1.2rem, 7vw, 7rem);
   top: 54%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   z-index: 2;
-  width: min(42rem, 88vw);
+  width: min(42rem, 56vw);
   border: 1px solid rgba(206, 214, 226, 0.25);
-  background: linear-gradient(160deg, rgba(6, 10, 15, 0.86), rgba(6, 9, 13, 0.72));
+  background: linear-gradient(160deg, rgba(10, 16, 24, 0.34), rgba(8, 13, 19, 0.24));
   padding: clamp(1.4rem, 3vw, 2.25rem);
   text-align: center;
-  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 .pause-panel__orbiter {
@@ -295,5 +293,7 @@ body {
 
   .pause-panel {
     width: min(92vw, 34rem);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
