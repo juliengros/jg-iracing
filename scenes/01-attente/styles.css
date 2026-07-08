@@ -38,7 +38,7 @@ body {
 }
 
 .scene__background {
-  background-image: url("./assets/images/jg-iracing-spa-fond.png");
+  background-image: url("../assets/images/bg-spa-iracing.png");
   background-size: cover;
   background-position: center right;
 }

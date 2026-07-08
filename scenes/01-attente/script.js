@@ -13,15 +13,15 @@ const liveConfig = {
 function buildCards() {
   return [
     {
-      icon: "./assets/icons/calendar.svg",
+      icon: "../assets/icons/icon-calendar.svg",
       text: `LIVE <strong>#${liveConfig.liveIndex}</strong>`,
     },
     {
-      icon: "./assets/icons/track.svg",
+      icon: "../assets/icons/icon-track.svg",
       text: `<strong>${liveConfig.eventName}</strong>`,
     },
     {
-      icon: "./assets/icons/car.svg",
+      icon: "../assets/icons/icon-car.svg",
       text: `<strong>${liveConfig.carName}</strong>`,
     },
   ];

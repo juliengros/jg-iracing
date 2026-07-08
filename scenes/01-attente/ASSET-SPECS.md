@@ -46,12 +46,12 @@ This document lists each visual element required to match the target mock.
 
 5. Session icon set
 
-- Files: `calendar.svg`, `track.svg`, `car.svg`.
+- Files: `icon-calendar.svg`, `icon-track.svg`, `icon-car.svg`.
 - Deliverable: consistent line style, single-color export for overlays.
 
 6. Social icon set
 
-- Files: `twitch.svg`, `youtube.svg`, `instagram.svg`.
+- Files: `icon-twitch.svg`, `icon-youtube.svg`, `icon-instagram.svg`.
 - Deliverable: monochrome white and optional red variant.
 
 7. Optional texture
