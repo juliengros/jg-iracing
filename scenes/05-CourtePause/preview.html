@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview OBS 1920x1080 - Scene 05 Courte Pause</title>
+    <style>
+      :root {
+        --obs-width: 1920;
+        --obs-height: 1080;
+        --preview-scale: 1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0a0d12;
+        color: #d7dde6;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .preview-root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+      }
+
+      .obs-canvas {
+        width: calc(var(--obs-width) * 1px);
+        height: calc(var(--obs-height) * 1px);
+        border: 0;
+        transform-origin: center center;
+        transform: scale(var(--preview-scale));
+        box-shadow: 0 16px 60px rgba(0, 0, 0, 0.55);
+        background: #000;
+      }
+
+      .badge {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        padding: 6px 10px;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 6px;
+        background: rgba(8, 10, 14, 0.7);
+        backdrop-filter: blur(2px);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="preview-root">
+      <iframe class="obs-canvas" src="./index.html" title="OBS 1920x1080 preview"></iframe>
+      <div class="badge" id="scaleBadge">Scale: 1.00x</div>
+    </main>
+
+    <script>
+      const OBS_WIDTH = 1920;
+      const OBS_HEIGHT = 1080;
+      const rootStyle = document.documentElement.style;
+      const badgeNode = document.getElementById("scaleBadge");
+
+      function updatePreviewScale() {
+        const scaleX = window.innerWidth / OBS_WIDTH;
+        const scaleY = window.innerHeight / OBS_HEIGHT;
+        const scale = Math.min(scaleX, scaleY);
+        const rounded = Math.round(scale * 1000) / 1000;
+
+        rootStyle.setProperty("--preview-scale", String(rounded));
+        badgeNode.textContent = `Scale: ${rounded.toFixed(2)}x`;
+      }
+
+      window.addEventListener("resize", updatePreviewScale);
+      updatePreviewScale();
+    </script>
+  </body>
+</html>

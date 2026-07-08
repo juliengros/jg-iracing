@@ -1,0 +1,299 @@
+:root {
+  --bg-dark: #05090d;
+  --bg-mid: #0d141b;
+  --panel: rgba(6, 10, 15, 0.82);
+  --line-soft: rgba(206, 214, 226, 0.2);
+  --text-main: #f3f7fb;
+  --text-muted: #a8b3c1;
+  --accent-red: #ed1212;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  background: linear-gradient(155deg, var(--bg-dark), var(--bg-mid));
+}
+
+.scene__background,
+.scene__overlay,
+.scene__grid {
+  position: absolute;
+  inset: 0;
+}
+
+.scene__background {
+  background-image: url("../assets/images/bg-spa-iracing.png");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(0.88) brightness(0.33) contrast(1.08);
+}
+
+.scene__overlay {
+  background:
+    radial-gradient(circle at 50% 52%, rgba(237, 18, 18, 0.18), transparent 56%),
+    linear-gradient(180deg, rgba(4, 6, 10, 0.55), rgba(3, 5, 9, 0.82));
+  animation: overlayShift 8s ease-in-out infinite;
+}
+
+.scene__grid {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.16;
+}
+
+.top-strip {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: clamp(3.2rem, 6.5vh, 4.35rem);
+  border-bottom: 1px solid var(--line-soft);
+  background: linear-gradient(90deg, rgba(2, 3, 5, 0.95), rgba(4, 6, 10, 0.88));
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1.5fr) 1fr;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.35rem clamp(0.7rem, 2.2vw, 2.2rem);
+}
+
+.top-strip__left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.top-strip__center {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.45rem, 0.9vw, 0.95rem);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.top-strip__right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.top-strip__brand-logo {
+  height: clamp(2.35rem, 4.5vh, 3.15rem);
+  width: auto;
+  filter: drop-shadow(0 0 12px rgba(237, 18, 18, 0.24));
+}
+
+.info-pill {
+  color: var(--text-main);
+  font-size: clamp(0.78rem, 1.25vw, 1.28rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-pill--live,
+.info-pill--team {
+  color: var(--accent-red);
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.info-sep {
+  color: rgba(168, 179, 193, 0.75);
+  font-size: clamp(0.7rem, 1.2vw, 1.1rem);
+}
+
+.pause-panel {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: min(42rem, 88vw);
+  border: 1px solid rgba(206, 214, 226, 0.25);
+  background: linear-gradient(160deg, rgba(6, 10, 15, 0.86), rgba(6, 9, 13, 0.72));
+  padding: clamp(1.4rem, 3vw, 2.25rem);
+  text-align: center;
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.45);
+}
+
+.pause-panel__orbiter {
+  position: relative;
+  width: 7.4rem;
+  height: 7.4rem;
+  margin: 0 auto 1rem;
+}
+
+.pause-panel__ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(237, 18, 18, 0.45);
+  border-radius: 999px;
+  animation: spinRing 6s linear infinite;
+}
+
+.pause-panel__ring--inner {
+  inset: 0.7rem;
+  border-color: rgba(206, 214, 226, 0.34);
+  animation-direction: reverse;
+  animation-duration: 4s;
+}
+
+.pause-panel__core {
+  position: absolute;
+  inset: 2.35rem;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 124, 124, 0.45), rgba(237, 18, 18, 0.88));
+  box-shadow: 0 0 26px rgba(237, 18, 18, 0.35);
+  animation: corePulse 2.2s ease-in-out infinite;
+}
+
+.pause-panel__kicker {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: clamp(0.8rem, 1.2vw, 1.05rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pause-panel__title {
+  margin: 0.4rem 0 0;
+  color: var(--text-main);
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  font-size: clamp(2rem, 5.8vw, 4.2rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pause-panel__subtitle {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted);
+  font-size: clamp(1.05rem, 1.95vw, 1.55rem);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.pause-panel__bars {
+  margin: 1.1rem auto 0;
+  width: min(60%, 16rem);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.bar {
+  width: 0.7rem;
+  height: 0.7rem;
+  background: rgba(237, 18, 18, 0.88);
+  box-shadow: 0 0 12px rgba(237, 18, 18, 0.26);
+  animation: barJump 1.4s ease-in-out infinite;
+}
+
+.bar--2 {
+  animation-delay: 0.12s;
+}
+
+.bar--3 {
+  animation-delay: 0.24s;
+}
+
+.bar--4 {
+  animation-delay: 0.36s;
+}
+
+.bar--5 {
+  animation-delay: 0.48s;
+}
+
+@keyframes overlayShift {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes spinRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes barJump {
+  0%,
+  100% {
+    height: 0.7rem;
+    opacity: 0.52;
+  }
+  50% {
+    height: 2.2rem;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1120px) {
+  .top-strip {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .top-strip__left,
+  .top-strip__center,
+  .top-strip__right {
+    justify-content: flex-start;
+  }
+
+  .top-strip__center {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.1rem;
+    scrollbar-width: thin;
+  }
+
+  .pause-panel {
+    width: min(92vw, 34rem);
+  }
+}
