@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBS Scene 02 - Piste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="scene" role="img" aria-label="Scene piste avec bandeau live en haut">
+      <header class="top-strip" aria-label="Bandeau live">
+        <section class="top-strip__left" aria-label="Logo et index live">
+          <img src="../assets/logos/logo-jg.svg" alt="JG" class="top-strip__brand-logo" />
+          <span class="info-pill info-pill--live" id="liveLabel">LIVE #002</span>
+        </section>
+
+        <section class="top-strip__center" aria-label="Informations live">
+          <span class="info-pill" id="eventLabel">SPA 24 PRACTICE</span>
+          <span class="info-sep" aria-hidden="true">|</span>
+          <span class="info-pill" id="carLabel">PORSCHE 992 GT3</span>
+        </section>
+
+        <section class="top-strip__right" aria-label="Team">
+          <span class="info-pill info-pill--team" id="teamLabel">FR RACING TEAM</span>
+        </section>
+      </header>
+    </main>
+
+    <script src="../live-config.js" defer></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>
