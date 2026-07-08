@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBS Scene 01 - Attente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="scene" role="img" aria-label="Scene d'attente iRacing avec compte a rebours">
+      <div class="scene__background" aria-hidden="true"></div>
+      <div class="scene__noise" aria-hidden="true"></div>
+      <div class="scene__left-overlay" aria-hidden="true"></div>
+
+      <section class="scene__content">
+        <header class="brand-hero">
+          <div class="brand-lockup" aria-label="JG et iRacing">
+            <img src="./assets/logos/jg-logo.svg" alt="JG" class="brand-lockup__logo" />
+            <span class="brand-lockup__text">iRACING</span>
+          </div>
+        </header>
+
+        <section class="hero-copy">
+          <h1 class="hero-copy__title">INSTALLE-TOI, DEPART IMMINENT.</h1>
+          <p class="hero-copy__subtitle">ON SE REJOINT AU STAND</p>
+        </section>
+
+        <section class="session-cards" id="sessionCards" aria-label="Infos de session"></section>
+
+        <section class="team-card" aria-label="Equipe">
+          <img src="./assets/logos/fr-racing-team-logo.svg" alt="FR" class="team-card__logo" />
+          <span class="team-card__text">RACING TEAM</span>
+        </section>
+      </section>
+
+      <footer class="bottom-bar" aria-label="Informations live">
+        <section class="bottom-bar__segment bottom-bar__segment--brand">
+          <img src="./assets/logos/jg-logo.svg" alt="JG" class="bottom-bar__brand-logo" />
+          <span class="bottom-bar__brand-text">iRACING</span>
+        </section>
+
+        <section class="bottom-bar__segment bottom-bar__segment--social">
+          <h2 class="bottom-bar__label">STAY CONNECTED</h2>
+          <div class="social-row">
+            <img src="./assets/icons/twitch.svg" alt="Twitch" class="social-row__icon" />
+            <img src="./assets/icons/youtube.svg" alt="YouTube" class="social-row__icon" />
+            <img src="./assets/icons/instagram.svg" alt="Instagram" class="social-row__icon" />
+            <span class="social-row__handle">@JulienGros</span>
+          </div>
+        </section>
+
+        <section class="bottom-bar__segment bottom-bar__segment--countdown">
+          <span class="countdown__label">DEMARRAGE DANS</span>
+          <span class="countdown__value" id="countdownValue">04:32</span>
+          <span class="countdown__cta">PREPAREZ-VOUS</span>
+        </section>
+      </footer>
+    </main>
+
+    <script src="./live-config.js" defer></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>

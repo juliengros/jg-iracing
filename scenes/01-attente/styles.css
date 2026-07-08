@@ -1,0 +1,319 @@
+:root {
+  --bg-dark: #05070a;
+  --bg-panel: rgba(7, 10, 15, 0.7);
+  --border-soft: rgba(192, 202, 216, 0.35);
+  --text-main: #f3f7fb;
+  --text-muted: #a8b3c1;
+  --accent-red: #ed1212;
+  --accent-red-soft: rgba(237, 18, 18, 0.5);
+  --shadow-red: 0 0 28px rgba(237, 18, 18, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+}
+
+.scene__background,
+.scene__noise,
+.scene__left-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.scene__background {
+  background-image: url("./assets/images/jg-iracing-spa-fond.png");
+  background-size: cover;
+  background-position: center right;
+}
+
+.scene__noise {
+  display: none;
+}
+
+.scene__left-overlay {
+  display: none;
+}
+
+.scene__content {
+  position: absolute;
+  top: 7vh;
+  left: clamp(1.5rem, 4vw, 4.5rem);
+  z-index: 2;
+  width: min(52vw, 56rem);
+}
+
+.brand-hero {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(1.8rem, 4vh, 3.2rem);
+}
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(-1.2rem, -2vh, -0.7rem);
+}
+
+.brand-lockup__logo {
+  width: clamp(9.3rem, 15vw, 14rem);
+  height: auto;
+  filter: drop-shadow(var(--shadow-red));
+}
+
+.brand-lockup__text {
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  font-size: clamp(1.15rem, 2.1vw, 2.05rem);
+  transform: translate(0.5rem, -2.55rem);
+  text-transform: uppercase;
+}
+
+.hero-copy {
+  max-width: 88%;
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.hero-copy__title {
+  margin: 0;
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  font-size: clamp(1.6rem, 3.35vw, 3.1rem);
+  letter-spacing: 0.08em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.hero-copy__subtitle {
+  margin: 0.75rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--accent-red-soft);
+  font-size: clamp(1rem, 1.7vw, 1.95rem);
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.session-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.session-card {
+  min-height: 8.7rem;
+  background: linear-gradient(180deg, rgba(9, 12, 18, 0.62), rgba(6, 8, 12, 0.88));
+  border: 1px solid var(--border-soft);
+  padding: 1rem 1rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02), 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+.session-card__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: block;
+  margin-inline: auto;
+  opacity: 0.95;
+}
+
+.session-card:nth-child(2) .session-card__icon,
+.session-card:nth-child(3) .session-card__icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.session-card__text {
+  margin: 0;
+  font-size: clamp(1.22rem, 1.75vw, 2.05rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--text-main);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.session-card__text strong {
+  color: var(--text-main);
+  font-weight: 400;
+}
+
+.team-card {
+  width: min(70%, 28rem);
+  min-height: 5.4rem;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(135deg, rgba(6, 9, 14, 0.85), rgba(7, 9, 13, 0.62));
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.team-card__logo {
+  height: 4.4rem;
+}
+
+.team-card__text {
+  color: var(--text-muted);
+  font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  transform: translateY(0.25rem);
+}
+
+.bottom-bar {
+  position: absolute;
+  left: 1.5vw;
+  right: 1.5vw;
+  bottom: 2.4vh;
+  z-index: 3;
+  min-height: 11.3vh;
+  border: 1px solid var(--accent-red-soft);
+  background: linear-gradient(90deg, rgba(2, 3, 5, 0.93), rgba(2, 4, 7, 0.86) 40%, rgba(3, 4, 8, 0.92));
+  display: grid;
+  grid-template-columns: 1fr 1.75fr 1.45fr;
+  align-items: center;
+}
+
+.bottom-bar__segment {
+  min-height: 70%;
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1.35rem;
+}
+
+.bottom-bar__segment + .bottom-bar__segment {
+  border-left: 1px solid rgba(189, 201, 213, 0.28);
+}
+
+.bottom-bar__segment--brand {
+  gap: 0.75rem;
+}
+
+.bottom-bar__brand-logo {
+  height: 3.4rem;
+}
+
+.bottom-bar__brand-text {
+  color: var(--text-muted);
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  transform: translate(-0.9rem, 0.25rem);
+}
+
+.bottom-bar__segment--social {
+  display: grid;
+  align-content: center;
+  row-gap: 0.35rem;
+}
+
+.bottom-bar__label {
+  margin: 0;
+  color: var(--accent-red);
+  letter-spacing: 0.08em;
+  font-size: 1.15rem;
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  text-transform: uppercase;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.social-row__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.social-row__handle {
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  margin-left: 0.4rem;
+}
+
+.bottom-bar__segment--countdown {
+  justify-content: center;
+  gap: 1.1rem;
+  text-transform: uppercase;
+}
+
+.countdown__label,
+.countdown__cta {
+  color: #d2d8e0;
+  font-size: clamp(1rem, 1.5vw, 1.55rem);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.countdown__value {
+  color: var(--accent-red);
+  font-family: "Orbitron", "Rajdhani", sans-serif;
+  font-size: clamp(1.6rem, 3.1vw, 3.05rem);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  min-width: 8ch;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .scene__content {
+    width: 90vw;
+  }
+
+  .session-cards {
+    grid-template-columns: 1fr;
+    max-width: 23rem;
+  }
+
+  .team-card {
+    max-width: 23rem;
+    width: 100%;
+  }
+
+  .bottom-bar {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+    padding-block: 0.35rem;
+  }
+
+  .bottom-bar__segment {
+    justify-content: center;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .bottom-bar__segment + .bottom-bar__segment {
+    border-left: 0;
+    border-top: 1px solid rgba(189, 201, 213, 0.18);
+  }
+}
