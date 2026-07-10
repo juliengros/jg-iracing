@@ -1,8 +1,16 @@
 window.LIVE_CONFIG = {
-  liveIndex: "002",
-  eventName: "SPA 24 PRACTICE",
+  liveIndex: "003",
+  eventName: "SPA 24H",
   carName: "PORSCHE 992 GT3",
-  teamName: "FR RACING TEAM",
+  teamName: "FR Racing Team #001",
   backgroundImageUrl: "",
-  startAtIso: "2026-07-08T20:30:00+02:00",
+  startAtIso: "2026-07-10T23:00:00+02:00",
+  chatBox: {
+    enabled: true,
+    mode: "twitch",
+    title: "TWITCH CHAT",
+    twitchChannel: "juliengros",
+    twitchUsePopout: true,
+    parentDomains: ["localhost"],
+  },
 };

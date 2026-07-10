@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBS Shared - Twitch Chat Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="chat-scene" aria-label="Chat box Twitch">
+      <aside class="chat-box" id="chatBox" aria-label="Chat en direct">
+        <header class="chat-box__header">
+          <span class="chat-box__dot" aria-hidden="true"></span>
+          <span class="chat-box__title" id="chatTitle">TWITCH CHAT</span>
+        </header>
+
+        <ul class="chat-box__list" id="chatMessages" aria-live="polite"></ul>
+
+        <iframe
+          class="chat-box__embed"
+          id="chatEmbed"
+          title="Twitch chat"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </aside>
+    </main>
+
+    <script src="../live-config.js" defer></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>
