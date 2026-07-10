@@ -212,11 +212,12 @@ body {
 }
 
 .bottom-bar__segment--brand {
+  justify-content: center;
   gap: 0.75rem;
 }
 
 .bottom-bar__brand-logo {
-  height: 3.4rem;
+  height: 3.95rem;
 }
 
 .bottom-bar__brand-text {
@@ -225,11 +226,12 @@ body {
   letter-spacing: 0.1em;
   font-weight: 500;
   text-transform: uppercase;
-  transform: translate(-0.9rem, 0.25rem);
+  transform: translateY(0.25rem);
 }
 
 .bottom-bar__segment--social {
   display: grid;
+  justify-items: center;
   align-content: center;
   row-gap: 0.35rem;
 }
@@ -246,6 +248,7 @@ body {
 .social-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.9rem;
 }
 
