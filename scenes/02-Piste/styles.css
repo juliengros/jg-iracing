@@ -35,7 +35,11 @@ body {
       transparent 2px,
       transparent 18px
     ),
-    linear-gradient(145deg, var(--bg-dark), var(--bg-asphalt));
+    linear-gradient(145deg, rgba(7, 9, 13, 0.78), rgba(15, 19, 25, 0.78)),
+    url("../assets/images/bg-le-mans-mc-laren-vintage.png");
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, center right;
+  background-repeat: no-repeat;
 }
 
 .top-strip {

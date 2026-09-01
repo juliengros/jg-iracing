@@ -4,7 +4,7 @@ const defaultLiveConfig = {
     title: "TWITCH CHAT",
     mode: "twitch",
     twitchChannel: "",
-    twitchUsePopout: true,
+    twitchUsePopout: false,
     parentDomains: ["localhost"],
     twitchChatUrl: "",
     maxMessages: 6,

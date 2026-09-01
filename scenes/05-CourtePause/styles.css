@@ -29,15 +29,32 @@ body {
   background: linear-gradient(155deg, var(--bg-dark), var(--bg-mid));
 }
 
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 3, 5, 0.98) 0%,
+    rgba(2, 3, 5, 0.9) 34%,
+    rgba(2, 3, 5, 0.68) 58%,
+    rgba(2, 3, 5, 0.28) 78%,
+    rgba(2, 3, 5, 0) 92%
+  );
+}
+
 .scene__background,
 .scene__overlay,
 .scene__grid {
   position: absolute;
+  z-index: 0;
   inset: 0;
 }
 
 .scene__background {
-  background-image: url("../assets/images/bg-spa-iracing.png");
+  background-image: url("../assets/images/bg-le-mans-mc-laren-vintage.png");
   background-size: cover;
   background-position: center;
   filter: grayscale(0.08) brightness(0.98) contrast(1.02);
